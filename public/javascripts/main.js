@@ -1,15 +1,33 @@
-require.config({
-  'paths': { 
-    "underscore": "libs/underscore", 
-    "backbone": "libs/backbone"
+requirejs.config({
+  paths: {
+    jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min',
+    underscore: 'libs/underscore-min',
+    backbone: 'libs/backbone-min',
+    text: 'libs/require/text'
+  },
+  shim: {
+    'underscore': {
+      exports: '_'
+    },
+    'backbone': {
+      //underscore and jquery dependencies
+      deps: [
+        'underscore',
+        'jquery'
+      ],
+      //using 'Backbone' global
+      exports: 'Backbone'
+    }
   }
 }); 
 
 require([
-  'order!libs/underscore',
-  'order!libs/backbone',
-  'order!app'
+  'jquery',
+  'underscore',
+  'backbone',
+  'app'
   ], 
-  function(_,Backbone,app){
-    app.init();
+  function($,_,Backbone,app){
+    console.log(Backbone, app);
+    //app.init();
 });

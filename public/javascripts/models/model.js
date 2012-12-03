@@ -1,4 +1,5 @@
-define(['jquery', 'backbone', 'underscore'], function($, Backbone, _){
+define([], function(){
+  console.log('sdfsd');
   var Model = Backbone.Model.extend({});
   
   return Model;
